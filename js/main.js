@@ -1,113 +1,19 @@
 class UI {
     static processData (data) {
-        // let data = {
-        //     city : {name: "Brussels"},
-        //     list : [
-        //         {
-        //             dt_txt : "2020-06-29 15:00:00",
-        //             main: {
-        //                 humidity: 51,
-        //                 temp: 18.46,
-        //                 temp_max: 18.46,
-        //                 temp_min: 14.27
-        //             },
-        //             weather: [{
-        //                 icon: "03d"
-        //             }],
-        //             wind: {speed: 8.91}
-        //         },
-        //         {
-        //             dt_txt : "2020-06-29 18:00:00",
-        //             main: {
-        //                 humidity: 51,
-        //                 temp: 19.46,
-        //                 temp_max: 19.46,
-        //                 temp_min: 13.27
-        //             },
-        //             weather: [{
-        //                 icon: "03d"
-        //             }],
-        //             wind: {speed: 9.91}
-        //         },
-        //         {
-        //             dt_txt : "2020-06-30 18:00:00",
-        //             main: {
-        //                 humidity: 51,
-        //                 temp: 16.59,
-        //                 temp_max: 20.59,
-        //                 temp_min: 11.03
-        //             },
-        //             weather: [{
-        //                 icon: "03d"
-        //             }],
-        //             wind: {speed: 7.61}
-        //         },
-        //         {
-        //             dt_txt : "2020-07-01 18:00:00",
-        //             main: {
-        //                 humidity: 51,
-        //                 temp: 16.59,
-        //                 temp_max: 18.59,
-        //                 temp_min: 14.03
-        //             },
-        //             weather: [{
-        //                 icon: "03d"
-        //             }],
-        //             wind: {speed: 7.61}
-        //         },
-        //         {
-        //             dt_txt : "2020-07-02 18:00:00",
-        //             main: {
-        //                 humidity: 51,
-        //                 temp: 16.59,
-        //                 temp_max: 22.59,
-        //                 temp_min: 18.03
-        //             },
-        //             weather: [{
-        //                 icon: "03d"
-        //             }],
-        //             wind: {speed: 7.61}
-        //         },
-        //         {
-        //             dt_txt : "2020-07-03 18:00:00",
-        //             main: {
-        //                 humidity: 51,
-        //                 temp: 16.59,
-        //                 temp_max: 24.59,
-        //                 temp_min: 19.03
-        //             },
-        //             weather: [{
-        //                 icon: "03d"
-        //             }],
-        //             wind: {speed: 7.61}
-        //         },
-        //         {
-        //             dt_txt : "2020-07-04 18:00:00",
-        //             main: {
-        //                 humidity: 51,
-        //                 temp: 16.59,
-        //                 temp_max: 16.59,
-        //                 temp_min: 16.03
-        //             },
-        //             weather: [{
-        //                 icon: "03d"
-        //             }],
-        //             wind: {speed: 7.61}
-        //         }
-        //     ]
-        // }
-        //// Display today
+        //// Display today in long format
         let now = new Date();
         let options = {weekday:'long', year:'numeric', month: 'long', day:'numeric'};
         document.getElementById('dateTime').innerHTML = now.toLocaleDateString('en-EN', options);
         //// Display city name
         document.getElementById('cityName').innerHTML = data.city.name;
+        //// Random img of the city
+        let imgUrl = `https://source.unsplash.com/800x800/?${data.city.name},building`;
+        document.querySelector('.cityImg').style.background = `url("${imgUrl}") bottom`;
+        document.querySelector('.cityImg').style.backgroundSize = 'cover';
         //// Accessing the array containing weather information
         let array = data.list;
-
         //// Icon code
         let iconCode = array[0].weather[0].icon;
-        console.log(iconCode);
         let iconURL = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
         document.querySelector('.todayIcon').innerHTML = `<img src="${iconURL}"/>`
         //// Display date/month in five day forecast boxes
@@ -134,8 +40,6 @@ class UI {
             }
         }
 
-
-
         //// Display current temperature, and temperature range, humidity and wind speed of today
         document.getElementById('currentTempNum').innerHTML = Math.round(array[0].main.temp);
         document.getElementById('humid').innerHTML = array[0].main.humidity;
@@ -150,7 +54,7 @@ class UI {
 document.querySelector('#submit').addEventListener('click', (e)=>{
     e.preventDefault();
 
-    ////Display weather infomation
+    ////Display weather information box
     document.querySelector('.displayBox').style.display = 'block';
 
     ////Get data from API
