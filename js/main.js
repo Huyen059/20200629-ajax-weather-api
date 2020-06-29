@@ -14,7 +14,7 @@ class UI {
         let array = data.list;
         //// Icon code
         let iconCode = array[0].weather[0].icon;
-        let iconURL = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+        let iconURL = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
         document.querySelector('.todayIcon').innerHTML = `<img src="${iconURL}"/>`
         //// Display date/month in five day forecast boxes
         for (let i = 0; i < 6; i++) {
@@ -61,7 +61,7 @@ document.querySelector('#submit').addEventListener('click', (e)=>{
     const apikey = '9a2ad67a0fa15d04ba82bf3d4d9b2b38';
     let country = 'be';
     let cityName = document.querySelector('#search').value;
-    let url = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName},${country}&appid=${apikey}&units=metric`;
+    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${country}&appid=${apikey}&units=metric`;
     fetch(url)
         .then(res => res.json())
         .then(data => UI.processData(data))
