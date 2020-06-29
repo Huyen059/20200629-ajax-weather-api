@@ -21,10 +21,69 @@
                 <button type="submit" id="submit">Search</button>
             </form>
         </div>
-        <div class="displayBox"></div>
+        <div class="displayBox">
+            <p id="dateTime"></p>
+            <div class="generalInfoToday">
+                <div>
+                    <h2 id="cityName"></h2>
+
+                    <div id="temperature">
+                        <div class="todayIcon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+                        <div>
+                            <span id="currentTempNum"></span>
+                        </div>
+                        <div>
+                            <span id="celcius">&deg;C</span>
+                            <span>|</span>
+                            <span id="farenheit">&deg;F</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="tempHumidWind">
+                    <p><i class="fas fa-thermometer-half" title="Temperature range"></i>&nbsp;<span class="todayHighTemp"></span>&deg;&nbsp;/&nbsp;<span class="todayLowTemp"></span>&deg;</p>
+                    <p><i class="fas fa-tint" title="Humidity"></i>&nbsp;<span id="humid"></span>%</p>
+                    <p><i class="fas fa-wind" title="Wind speed"></i>&nbsp;<span id="windSpeed"></span>&nbsp;m/s</p>
+                </div>
+            </div>
+            <div class="weatherFiveDays">
+                <div class="day" id="day1">
+                    <p class="date"></p>
+                    <p><i class="fas fa-cloud-rain"></i></p>
+                    <p class="highTemp">20&deg;</p>
+                    <p class="lowTemp">20&deg;</p>
+                </div>
+                <div class="day" id="day2">
+                    <p class="date"></p>
+                    <p><i class="fas fa-cloud-rain"></i></p>
+                    <p class="highTemp">20&deg;</p>
+                    <p class="lowTemp">20&deg;</p>
+                </div>
+                <div class="day" id="day3">
+                    <p class="date"></p>
+                    <p><i class="fas fa-cloud-rain"></i></p>
+                    <p class="highTemp">20&deg;</p>
+                    <p class="lowTemp">20&deg;</p>
+                </div>
+                <div class="day" id="day4">
+                    <p class="date"></p>
+                    <p><i class="fas fa-cloud-rain"></i></p>
+                    <p class="highTemp">20&deg;</p>
+                    <p class="lowTemp">20&deg;</p>
+                </div>
+                <div class="day" id="day5">
+                    <p class="date"></p>
+                    <p><i class="fas fa-cloud-rain"></i></p>
+                    <p class="highTemp">20&deg;</p>
+                    <p class="lowTemp">20&deg;</p>
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 <footer>&copy; Copyright 2020</footer>
+<script src="https://kit.fontawesome.com/2e0a884014.js" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

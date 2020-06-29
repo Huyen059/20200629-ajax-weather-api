@@ -11,7 +11,7 @@
 }
 
 #weatherPage {
-  background: rgba(190, 226, 251, .7);
+  background: rgba(190, 226, 251, 0.7);
   font-family: Roboto, sans-serif;
   font-size: 1rem;
   overflow-x: hidden;
@@ -62,9 +62,97 @@
     }
 
     .displayBox {
+      max-width: 600px;
       width: 100%;
       height: 50vh;
-      border: 1px solid red;
+      background: #fff;
+      border-radius: 5px;
+      padding: .5rem;
+      margin: 0 auto;
+      display: none;
+
+      .generalInfoToday {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        &>div {
+          padding: 1rem;
+
+          i {
+            width: 20px;
+            text-align: center;
+            color: #0077cc;
+          }
+        }
+
+        #tempHumidWind {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+
+          .todayLowTemp {
+            color: #808080;
+          }
+        }
+
+        h2 {
+          margin-bottom: 1rem;
+        }
+
+        p {
+          line-height: 1.5rem;
+        }
+
+        #temperature {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+
+          .todayIcon {
+            font-size: 2.5rem;
+          }
+
+          #currentTempNum {
+            font-size: 2.5rem;
+          }
+
+          #celcius, #farenheit {
+            color: #808080;
+            cursor: pointer;
+
+            &:hover {
+              color: #ffffff;
+            }
+          }
+
+          #celcius {
+            color: #000;
+          }
+        }
+      }
+
+      .weatherFiveDays {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+
+        .day {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background: rgba(190, 226, 251, 0.7);
+          border-radius: 5px;
+          margin: 0 .5rem;
+
+          p {
+            line-height: 2rem;
+          }
+
+          .lowTemp {
+            color: #808080;
+          }
+        }
+      }
     }
   }
 
