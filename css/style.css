@@ -114,6 +114,12 @@
       #weatherPage main .searchBox form input, #weatherPage main .searchBox form button {
         margin-bottom: 0;
         margin-right: 0.5rem; }
+      #weatherPage main .searchBox form input[type=text] {
+        width: 150px; }
+      #weatherPage main .searchBox form input[type=search] {
+        width: 200px; }
+      #weatherPage main .searchBox form button {
+        width: 100px; }
     #weatherPage main .displayBox .generalInfoToday {
       margin-bottom: 1rem;
       display: grid;
