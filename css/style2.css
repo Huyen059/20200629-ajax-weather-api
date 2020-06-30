@@ -123,7 +123,7 @@
           #weatherPage main .forecast .row .col .icon {
             width: 2rem;
             height: 2rem;
-            background: url("https://openweathermap.org/img/wn/04d@2x.png") center center;
+            background-position: center center;
             background-size: 140%; }
   #weatherPage footer {
     position: absolute;

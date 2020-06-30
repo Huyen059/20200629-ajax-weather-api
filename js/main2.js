@@ -38,7 +38,8 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
 
                     //// Getting name of the city
                     document.querySelector('.imgAndInfoCtn .cityName').innerHTML = data.city.name;
-                    //// Display today in long format
+
+                    //// Display date info of today in long format
                     let now = new Date();
                     let options = {weekday:'long', year:'numeric', month: 'long', day:'numeric'};
                     document.querySelector('.imgAndInfoCtn .todayDate').innerHTML = now.toLocaleDateString('en-EN', options);
@@ -64,6 +65,21 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
                         let day = (date.getDate() < 10) ? `0${date.getDate()}` : date.getDate();
                         let cutArr = array.filter(object => object.dt_txt.indexOf(`${year}-${month}-${day}`) !== -1);
                         let avgTemp = cutArr.map(item => parseFloat(item.main.temp)).reduce((total, num) => total + num) / cutArr.length;
+
+                        //// Get all icons of weather for 1 day
+                        let iconArr = cutArr.map(item => item.weather[0].icon);
+                        //// Find the icon that appears most frequently
+                        let icon = '';
+                        let freq = 1;
+                        let distinctIconArr = [...new Set(iconArr)];
+                        let iconFreq = distinctIconArr.map(icon => [icon, iconArr.filter(el => el === icon).length]);
+                        iconFreq.forEach(array => {
+                            if (array[1] >= freq) {
+                                freq = array[1];
+                                icon = array[0];
+                            }
+                        })
+                        document.querySelectorAll('.forecast .icon')[i].style.backgroundImage = `url("https://openweathermap.org/img/wn/${icon}@2x.png")`;
 
                         ////Display in each box in html
                         document.querySelectorAll('.forecast .date')[i].innerHTML = `${day}/${month}`;
