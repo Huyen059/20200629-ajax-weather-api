@@ -44,6 +44,8 @@ class UI {
         document.getElementById('currentTempNum').innerHTML = Math.round(array[0].main.temp);
         document.getElementById('humid').innerHTML = array[0].main.humidity;
         document.getElementById('windSpeed').innerHTML = Math.round(array[0].wind.speed);
+
+
     }
 
 }

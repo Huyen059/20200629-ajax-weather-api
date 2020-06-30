@@ -87,19 +87,21 @@
           border-radius: 5px;
           width: 100%;
           margin: 0 1rem;
-          height: 30vh;
+          height: 60vh;
           background: url("https://source.unsplash.com/800x800/?nature,weather");
           background-size: cover;
         }
       }
 
       .infoCtn {
+        display: none;
         background: #ffffff;
         margin: 1rem 1rem 0 1rem;
         padding: 1rem;
         border-radius: 5px;
-        @include flexCenter;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
         h2 {
           margin-bottom: .5rem;
@@ -121,9 +123,11 @@
         }
 
         .icon {
-          height: 4rem;
+          width: 6rem;
+          height: 6rem;
+          margin: 0 auto;
           background: url("https://openweathermap.org/img/wn/04d@2x.png") center center;
-          background-size: 80%;
+          background-size: 120%;
         }
 
         .row {
@@ -138,6 +142,7 @@
     }
 
     .forecast {
+      display: none;
       margin: 1rem 1rem 0 1rem;
       padding: 1rem;
       border-radius: 5px;

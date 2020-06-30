@@ -13,24 +13,24 @@
     <h1>5-day weather forecast</h1>
 </header>
 <main>
-    <div class="formCtn">
+    <form class="formCtn">
         <div>
-            <input type="text" name="country" placeholder="Country">
+            <input type="text" name="country" placeholder="Country" id="inputCountry">
         </div>
         <div>
-            <input type="text" name="city" placeholder="City/State">
+            <input type="text" name="city" placeholder="City/State"  id="inputCity">
         </div>
         <div>
             <button type="submit"><i class="fas fa-search"></i></button>
         </div>
-    </div>
+    </form>
     <div class="imgAndInfoCtn">
         <div class="imgCtn">
             <div class="randomImg"></div>
         </div>
         <div class="infoCtn">
-            <h2 class="cityName">Bru</h2>
-            <p class="todayDate">Mon Jun 30 2020</p>
+            <h2 class="cityName"></h2>
+            <p class="todayDate"></p>
             <div class="rowFullWidth">
                 <div class="col50 icon">
 
@@ -38,7 +38,7 @@
                 <div class="col50">
                     <div class="row">
                         <div>
-                            <p><span class="currentTemp">18</span></p>
+                            <p><span class="currentTemp"></span></p>
                         </div>
                         <div>
                             <p>&deg;C</p>
@@ -51,14 +51,14 @@
                     <p title="Current humidity">
                         <i class="fas fa-tint"></i>
                         &nbsp;
-                        <span class="currentHumid">40</span>%
+                        <span class="currentHumid"></span>%
                     </p>
                 </div>
                 <div class="col50">
                     <p  title="Current wind speed">
                         <i class="fas fa-wind"></i>
                         &nbsp;
-                        <span class="currentWindSpeed">4</span>m/s
+                        <span class="currentWindSpeed"></span>m/s
                     </p>
                 </div>
             </div>
