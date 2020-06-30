@@ -120,6 +120,12 @@
           @include flexCenter;
         }
 
+        .icon {
+          height: 4rem;
+          background: url("https://openweathermap.org/img/wn/04d@2x.png") center center;
+          background-size: 80%;
+        }
+
         .row {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
