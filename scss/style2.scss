@@ -154,14 +154,16 @@
       }
 
       .row {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-column-gap: .3rem;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
 
         .col {
           background: #0068b3;
           color: #ffffff;
           padding: .5rem;
+          margin-right: .2rem;
+          margin-bottom: .2rem;
           border-radius: 5px;
           text-align: center;
           line-height: 2rem;
