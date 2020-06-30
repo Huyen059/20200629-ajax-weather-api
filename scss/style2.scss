@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#weatherPage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 1rem;
+  background: #ecf4fa;
+  overflow-x: hidden;
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+
+  header {
+    background: url("../img/header-bg.jpg") center;
+    background-size: cover;
+    height: 20vh;
+    width: 100%;
+    @include flexCenter;
+    box-shadow: 10px 10px 10px -10px #35a2f3;
+
+    h1 {
+      text-align: center;
+    }
+  }
+
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 1rem;
+    margin-bottom: 3rem;
+
+    .formCtn {
+      margin: 0 1rem;
+      display: grid;
+      grid-template-columns: 4fr 4fr 2fr;
+
+      &>div {
+        margin-right: .3rem;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+
+      input {
+        width: 100%;
+        padding: .5rem;
+        border: 1px solid red;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+      }
+
+      input:focus {
+        box-shadow: 0 0 1px 1px #0095ff;
+      }
+
+      button {
+        @extend input;
+        background: #0095ff;
+        color: #ffffff;
+
+        &:hover {
+          background: darken(#0095ff, 15%);
+        }
+      }
+    }
+
+    .imgAndInfoCtn {
+      .imgCtn {
+        padding-top: 1rem;
+        @include flexCenter;
+
+        .randomImg {
+          border-radius: 5px;
+          width: 100%;
+          margin: 0 1rem;
+          height: 30vh;
+          background: url("https://source.unsplash.com/800x800/?nature,weather");
+          background-size: cover;
+        }
+      }
+
+      .infoCtn {
+        background: #ffffff;
+        margin: 1rem 1rem 0 1rem;
+        padding: 1rem;
+        border-radius: 5px;
+        @include flexCenter;
+        flex-direction: column;
+
+        h2 {
+          margin-bottom: .5rem;
+        }
+
+        .todayDate {
+          margin-bottom: .5rem;
+        }
+
+        .rowFullWidth {
+          width: 100%;
+          margin-bottom: .5rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .col50 {
+          @include flexCenter;
+        }
+
+        .row {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+
+          .currentTemp {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+
+    .forecast {
+      margin: 1rem 1rem 0 1rem;
+      padding: 1rem;
+      border-radius: 5px;
+      background: #ffffff;
+
+      h3 {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-column-gap: .3rem;
+
+        .col {
+          background: #0068b3;
+          color: #ffffff;
+          padding: .5rem;
+          border-radius: 5px;
+          text-align: center;
+          line-height: 2rem;
+          @include flexCenter;
+          flex-direction: column;
+
+          .icon {
+            width: 2rem;
+            height: 2rem;
+            background: url("https://openweathermap.org/img/wn/04d@2x.png") center center;
+            background-size: 140%;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    padding-left: 1rem;
+    padding-bottom: .5rem;
+  }
+}
+
