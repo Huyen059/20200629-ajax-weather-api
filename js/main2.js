@@ -46,6 +46,9 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
             document.querySelector('.imgAndInfoCtn .currentHumid').innerHTML = array[0].main.humidity;
             document.querySelector('.imgAndInfoCtn .currentWindSpeed').innerHTML = Math.round(array[0].wind.speed);
 
+            //// Array to store data to make graph later
+            let chartLabels = [], chartDataHighTemp = [], chartDataLowTemp = [];
+
             //// Display five day forecast including today
             for (let i = 0; i < 5; i++) {
                 let date = new Date(now.getFullYear(), now.getMonth(), now.getDate()+i);
@@ -54,6 +57,8 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
                 let day = (date.getDate() < 10) ? `0${date.getDate()}` : date.getDate();
                 let cutArr = array.filter(object => object.dt_txt.indexOf(`${year}-${month}-${day}`) !== -1);
                 let avgTemp = cutArr.map(item => parseFloat(item.main.temp)).reduce((total, num) => total + num) / cutArr.length;
+                let highestTemp = cutArr.map(item => parseFloat(item.main.temp_max)).sort((a,b) => a-b)[cutArr.length-1];
+                let lowestTemp = cutArr.map(item => parseFloat(item.main.temp_min)).sort((a,b) => b-a)[cutArr.length-1];
 
                 //// Get all icons of weather for 1 day
                 let iconArr = cutArr.map(item => item.weather[0].icon);
@@ -71,8 +76,49 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
                 document.querySelectorAll('.forecast .icon')[i].style.backgroundImage = `url("https://openweathermap.org/img/wn/${icon}@2x.png")`;
 
                 ////Display in each box in html
-                document.querySelectorAll('.forecast .date')[i].innerHTML = `${day}/${month}`;
+                // document.querySelectorAll('.forecast .date')[i].innerHTML = `${day}/${month}`;
+                let dayOfWeek = `${date.toLocaleDateString('en-EN', {weekday:'long'}).substring(0,3)}`;
+                document.querySelectorAll('.forecast .date')[i].innerHTML = dayOfWeek;
                 document.querySelectorAll('.forecast .forecastTemp')[i].innerHTML = Math.round(avgTemp);
+
+                //// Add values to the arrays to make graph later
+                if (i>=1){
+                    chartLabels.push(dayOfWeek);
+                    chartDataHighTemp.push(highestTemp);
+                    chartDataLowTemp.push(lowestTemp);
+                }
             }
+
+            //// Draw graph
+            let myChart = document.querySelector('.tempChart').getContext('2d');
+            let massPopChart = new Chart(myChart, {
+                type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                data:{
+                    labels: chartLabels,
+                    datasets:[
+                        {
+                            label:'Lowest temperature',
+                            data:chartDataLowTemp,
+                            borderColor:'red',
+                            fill:false,
+                            hoverBackgroundColor: '#ccc'
+                        },
+                        {
+                            label:'Highest temperature',
+                            data:chartDataHighTemp,
+                            borderColor:'blue',
+                            fill:false,
+                            hoverBackgroundColor: '#ccc'
+                        }
+                    ]
+                },
+                options:{
+                    title:{
+                        display:true,
+                        text:'Temperature range in the next four days',
+                        fontSize:25
+                    }
+                }
+            });
         })
 })

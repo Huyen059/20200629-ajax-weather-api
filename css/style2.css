@@ -53,6 +53,7 @@
           background: #0068b3; }
     #weatherPage main .imgAndInfoCtn .imgCtn {
       padding-top: 1rem;
+      margin-bottom: 1rem;
       display: flex;
       justify-content: center;
       align-items: center; }

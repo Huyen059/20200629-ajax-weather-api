@@ -81,6 +81,7 @@
     .imgAndInfoCtn {
       .imgCtn {
         padding-top: 1rem;
+        margin-bottom: 1rem;
         @include flexCenter;
 
         .randomImg {
