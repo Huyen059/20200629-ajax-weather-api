@@ -95,7 +95,7 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
             Chart.defaults.global.elements.point.radius = 5;
             Chart.defaults.global.elements.point.hoverRadius = 7;
             Chart.defaults.global.elements.point.pointStyle = 'rect';
-            let massPopChart = new Chart(myChart, {
+            let tempChart = new Chart(myChart, {
                 type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                 data:{
                     labels: chartLabels,
