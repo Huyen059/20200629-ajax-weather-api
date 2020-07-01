@@ -82,15 +82,19 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
                 document.querySelectorAll('.forecast .forecastTemp')[i].innerHTML = Math.round(avgTemp);
 
                 //// Add values to the arrays to make graph later
-                if (i>=1){
+                //if (i>=1){
                     chartLabels.push(dayOfWeek);
                     chartDataHighTemp.push(highestTemp);
                     chartDataLowTemp.push(lowestTemp);
-                }
+                //}
             }
 
             //// Draw graph
             let myChart = document.querySelector('.tempChart').getContext('2d');
+            Chart.defaults.global.defaultFontSize = 16;
+            Chart.defaults.global.elements.point.radius = 5;
+            Chart.defaults.global.elements.point.hoverRadius = 7;
+            Chart.defaults.global.elements.point.pointStyle = 'rect';
             let massPopChart = new Chart(myChart, {
                 type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                 data:{
@@ -99,14 +103,16 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
                         {
                             label:'Lowest temperature',
                             data:chartDataLowTemp,
-                            borderColor:'red',
+                            borderColor:'blue',
+                            pointBackgroundColor:'blue',
                             fill:false,
                             hoverBackgroundColor: '#ccc'
                         },
                         {
                             label:'Highest temperature',
                             data:chartDataHighTemp,
-                            borderColor:'blue',
+                            borderColor:'red',
+                            pointBackgroundColor:'red',
                             fill:false,
                             hoverBackgroundColor: '#ccc'
                         }
@@ -117,6 +123,16 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
                         display:true,
                         text:'Temperature range in the next four days',
                         fontSize:25
+                    },
+                    scales:{
+                        yAxes:[
+                            {
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Temperature (\xB0C)'
+                                }
+                            }
+                        ]
                     }
                 }
             });
