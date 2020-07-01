@@ -77,7 +77,8 @@ document.querySelector('.formCtn button').addEventListener('click', (e)=>{
 
                 ////Display in each box in html
                 // document.querySelectorAll('.forecast .date')[i].innerHTML = `${day}/${month}`;
-                let dayOfWeek = `${date.toLocaleDateString('en-EN', {weekday:'long'}).substring(0,3)}`;
+                //let dayOfWeek = `${date.toLocaleDateString('en-EN', {weekday:'long'}).substring(0,3)}`;
+                let dayOfWeek = `${date.toDateString().substring(0,3)}`;
                 document.querySelectorAll('.forecast .date')[i].innerHTML = dayOfWeek;
                 document.querySelectorAll('.forecast .forecastTemp')[i].innerHTML = Math.round(avgTemp);
 
